@@ -1,0 +1,4 @@
+D:\KongHao\KongHao\Code\C#\ProjectIntegration\LibExtend\bin\Debug\LibExtend.dll
+D:\KongHao\KongHao\Code\C#\ProjectIntegration\LibExtend\bin\Debug\LibExtend.pdb
+D:\KongHao\KongHao\Code\C#\ProjectIntegration\LibExtend\obj\Debug\LibExtend.dll
+D:\KongHao\KongHao\Code\C#\ProjectIntegration\LibExtend\obj\Debug\LibExtend.pdb
