@@ -8,3 +8,13 @@ D:\KongHao\KongHao\Code\C#\ProjectIntegration\CodeManageUnitTest\bin\Debug\LibEx
 D:\KongHao\KongHao\Code\C#\ProjectIntegration\CodeManageUnitTest\obj\Debug\CodeManageUnitTest.csprojResolveAssemblyReference.cache
 D:\KongHao\KongHao\Code\C#\ProjectIntegration\CodeManageUnitTest\obj\Debug\CodeManageUnitTest.dll
 D:\KongHao\KongHao\Code\C#\ProjectIntegration\CodeManageUnitTest\obj\Debug\CodeManageUnitTest.pdb
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManageUnitTest\bin\Debug\CodeManageUnitTest.dll
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManageUnitTest\bin\Debug\CodeManageUnitTest.pdb
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManageUnitTest\bin\Debug\CodeManage.dll
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManageUnitTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManageUnitTest\bin\Debug\LibExtend.dll
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManageUnitTest\bin\Debug\CodeManage.pdb
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManageUnitTest\bin\Debug\LibExtend.pdb
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManageUnitTest\obj\Debug\CodeManageUnitTest.csprojResolveAssemblyReference.cache
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManageUnitTest\obj\Debug\CodeManageUnitTest.dll
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManageUnitTest\obj\Debug\CodeManageUnitTest.pdb

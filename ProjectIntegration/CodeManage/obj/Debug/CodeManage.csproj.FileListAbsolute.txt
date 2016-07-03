@@ -5,3 +5,10 @@ D:\KongHao\KongHao\Code\C#\ProjectIntegration\CodeManage\bin\Debug\LibExtend.dll
 D:\KongHao\KongHao\Code\C#\ProjectIntegration\CodeManage\bin\Debug\LibExtend.pdb
 D:\KongHao\KongHao\Code\C#\ProjectIntegration\CodeManage\obj\Debug\CodeManage.dll
 D:\KongHao\KongHao\Code\C#\ProjectIntegration\CodeManage\obj\Debug\CodeManage.pdb
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\bin\Debug\CodeManage.dll
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\bin\Debug\CodeManage.pdb
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\bin\Debug\LibExtend.dll
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\bin\Debug\LibExtend.pdb
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\obj\Debug\CodeManage.csprojResolveAssemblyReference.cache
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\obj\Debug\CodeManage.dll
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\obj\Debug\CodeManage.pdb

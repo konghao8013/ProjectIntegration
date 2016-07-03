@@ -2,3 +2,7 @@ D:\KongHao\KongHao\Code\C#\ProjectIntegration\LibExtend\bin\Debug\LibExtend.dll
 D:\KongHao\KongHao\Code\C#\ProjectIntegration\LibExtend\bin\Debug\LibExtend.pdb
 D:\KongHao\KongHao\Code\C#\ProjectIntegration\LibExtend\obj\Debug\LibExtend.dll
 D:\KongHao\KongHao\Code\C#\ProjectIntegration\LibExtend\obj\Debug\LibExtend.pdb
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\LibExtend\bin\Debug\LibExtend.dll
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\LibExtend\bin\Debug\LibExtend.pdb
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\LibExtend\obj\Debug\LibExtend.dll
+D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\LibExtend\obj\Debug\LibExtend.pdb
