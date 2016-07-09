@@ -12,7 +12,7 @@ namespace WebNetBuilder.App_Start
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: 
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                new { controller = "Home", action = "ProjectStatus", id = UrlParameter.Optional }
             );
         }
     }

@@ -16,13 +16,20 @@
 
         return iframe;
     };
-    jQuery.Json = function (url, funcName, data, success, errorFunc) {
+    jQuery.PostJson = function (url, funcName, data, success, errorFunc) {
+        $.Json(url, funcName, data, success, errorFunc, "POST");
+    };
+    jQuery.DeleteJson = function (url, funcName, data, success, errorFunc) {
+        $.Json(url, funcName, data, success, errorFunc, "DELETE");
+    };
+
+    jQuery.Json = function (url, funcName, data, success, errorFunc, type) {
 
         data = data == null ? data : JSON.stringify(data);
         // alert(data);
         //    data = JSON.stringify(data);
         $.ajax({
-            type: "POST",
+            type: type,
             url: url + "/" + funcName,
             dataType: "json",
             async: true,
@@ -337,12 +344,27 @@ function Guid(g) {
 Guid.Empty = new Guid();
 //初始化 Guid 类的一个新实例。
 Guid.NewGuid = function () {
-    var g = "";
-    var i = 32;
-    while (i--) {
-        g += Math.floor(Math.random() * 16.0).toString(16);
+    var s = [];
+
+    var hexDigits = "0123456789abcdef";
+
+    for (var i = 0; i < 36; i++) {
+
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+
     }
-    return new Guid(g);
+
+    s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+
+    s[8] = s[13] = s[18] = s[23] = "-";
+
+
+
+    var uuid = s.join("");
+
+    return uuid;
 }
 //a)         “N”： xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -352,15 +374,60 @@ Guid.NewGuid = function () {
 
 //d)         “P”  括在圆括号中、由连字符分隔的 32 位数字：(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
 
-//Array.prototype.Where = function (func) {
-//    if (this == null || func == null) {
-//        return;
-//    }
-//    var length = this.length;
-//    for (var i = 0; i < length; i++) {
-//        if (func(this[length])) {
+Array.prototype.Where = function (func) {
+    if (this == null || func == null) {
+        return;
+    }
+    var length = this.length;
+    var list = new Array();
+    for (var i = 0; i < length; i++) {
+        if (func(this[i])) {
 
-//            return func(this[length]);
-//        }
-//    }
-//};
+            list[list.length] = this[i];
+        }
+    }
+    return list;
+};
+Array.prototype.First = function (func) {
+    if (this == null || func == null) {
+        return;
+    }
+    var length = this.length;
+    for (var i = 0; i < length; i++) {
+        if (func(this[i])) {
+
+            return this[i];
+        }
+    }
+};
+
+
+Array.prototype.Index = function (func) {
+    if (this == null || func == null) {
+        return;
+    }
+    var index = -1;
+    var length = this.length;
+    for (var i = 0; i < length; i++) {
+        if (func(this[i])) {
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
+
+
+/* 
+    *  删除数组元素:Array.removeArr(index) 
+    */
+Array.prototype.removeArr = function (index) {
+    if (isNaN(index) || index >= this.length) { return false; }
+    this.splice(index, 1);
+}
+/* 
+*  插入数组元素:Array.insertArr(dx) 
+*/
+Array.prototype.insertArr = function (index, item) {
+    this.splice(index, 0, item);
+};

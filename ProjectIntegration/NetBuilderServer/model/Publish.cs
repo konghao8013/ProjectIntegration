@@ -19,5 +19,6 @@ namespace NetBuilderServer
     public class Target
     {
         public string Path { set; get; }
+        public string Guid { set; get; }
     }
 }

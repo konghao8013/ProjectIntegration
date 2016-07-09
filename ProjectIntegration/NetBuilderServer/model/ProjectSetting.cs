@@ -14,7 +14,9 @@ namespace NetBuilderServer
 
         public CodeMgr CodeMgr { set; get; }
 
+        public String Status { set; get; }
 
+        public string LastTime { set; get; }
 
 
     }

@@ -7,7 +7,7 @@
     <ul class="nav nav-tabs" id="myTab">
 
         <li ng-repeat="p in list">
-            <a href="#{{p.ProjectName}}" data-toggle="tab">{{p.ProjectName}}</a>
+            <a href="#{{p.ProjectName}}" data-toggle="tab" >{{p.ProjectName}}</a>
 
         </li>
     </ul>
@@ -17,18 +17,32 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-8">
                             <div class="input-group">
                                 <span class="input-group-addon">项目名称：</span>
                                 <input type="text" class="form-control" placeholder="项目名称" ng-model="p.ProjectName" />
                             </div>
                         </div>
+                        <div class="col-lg-2">
+                            <div class="row">
+                                <div class="col-lg-4">
 
-                        <div class="col-lg-5">
-                            <button type="button" class="btn btn-default" ng-click="saveProjectList(p)" aria-label="Left Align">
-                                <span class="glyphicon glyphicon-ok" aria-hidden="true"> 保存项目信息</span>
-                            </button>
+                                    <button type="button" class="btn btn-default" ng-click="saveProjectList(p)" aria-label="Left Align">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"> 保存项目信息</span>
+                                    </button>
+                                </div>
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-4">
+                                    <button type="button" class="btn btn-default" ng-click="deleteProject(p)" aria-label="Left Align">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"> 删除项目信息</span>
+                                    </button>
+                                </div>
+
+
+
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="panel-body">
@@ -47,7 +61,31 @@
                                 <input type="text" class="form-control" placeholder="代码存放绝对路径" ng-model="p.CodeMgr.Target" />
                             </div>
                             <br />
+                         
+                            <div class="row">
 
+                                <div class="col-lg-4 row">
+                                    <div class="col-lg-5">
+                                        <label for="radio_svn">选择SVN代码签出</label>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <input type="radio" id="radio_svn" class="radio"  value="1" name="groupCodeType" ng-model="p.CodeMgr.Type"/>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-4 row">
+                                    <div class="col-lg-5">
+                                        <label for="radio_git">选择GIT代码签出</label>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <input type="radio" id="radio_git" class="radio" name="groupCodeType" value="2"  ng-model="p.CodeMgr.Type" />
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <br />
                             <div class="input-group">
                                 <span class="input-group-addon">用户名称：</span>
                                 <input type="text" class="form-control" placeholder="用户名称" ng-model="p.CodeMgr.UserName" />
@@ -68,9 +106,16 @@
 
                             <div class="input-group">
                                 <span class="input-group-addon">解决方案路径：</span>
-                                <input type="text" class="form-control" placeholder="需要生成解决方案的绝对路劲" ng-model="p.Publish.Path" />
+                                <input type="text" class="form-control" placeholder="需要生成解决方案的绝对路劲" ng-model="p.Solution.Path" />
                             </div>
+                            <br />
+                            <div class="input-group">
+                                <span class="input-group-addon">生成器地址：</span>
+                                <input type="text" class="form-control" placeholder="发布解决方案路径" ng-model="p.Solution.BuilderPath" />
 
+
+                            </div>
+                            <br />
                         </div>
                     </div>
 
@@ -79,12 +124,13 @@
 
                         <div class="input-group">
                             <span class="input-group-addon">发布解决方案路径：</span>
-                            <input type="text" class="form-control" placeholder="发布解决方案路径" ng-model="p.Solution.Path" />
+                            <input type="text" class="form-control" placeholder="发布解决方案路径" ng-model="p.Publish.Path" />
 
 
                         </div>
 
                         <br />
+
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <ul class="nav nav-tabs">
@@ -115,9 +161,18 @@
 
                                         <div ng-repeat="w in p.Publish.TargetDirectorys">
                                             <br />
-                                            <div class="input-group">
-                                                <span class="input-group-addon">发布地址：</span>
-                                                <input type="text" class="form-control" ng-model="w.Path" placeholder="{{w.Path}}" />
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">发布地址：</span>
+                                                        <input type="text" class="form-control" ng-model="w.Path" placeholder="{{w.Path}}" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <button ng-click="deletePW(p,w)" type="button" class="btn btn-default" aria-label="Left Align">
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+                                                    </button>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -126,9 +181,20 @@
                                     <div class="tab-pane fade" id="忽略文件">
                                         <div ng-repeat="c in p.Publish.LoseContext">
                                             <br />
-                                            <div class="input-group">
-                                                <span class="input-group-addon">忽略文件：</span>
-                                                <input type="text" class="form-control" ng-model="c.Path" placeholder="{{c.Path}}" />
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">忽略文件：</span>
+                                                        <input type="text" class="form-control" ng-model="c.Path" placeholder="{{c.Path}}" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2">
+                                                    <button ng-click="deletePC(p,c)" type="button" class="btn btn-default" aria-label="Left Align">
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+                                                    </button>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -161,70 +227,108 @@
         $(function () {
 
         });
+
+        function GetProjectModel() {
+            return {
+                ProjectName: "新建",
+                Publish: {
+                    TargetDirectorys: [{
+                        Path: ""
+                    }],
+                    LoseContext: [
+                        {
+                            Path: ""
+                        }
+                    ]
+                }
+
+            };
+        }
         var app = angular.module('myApp', []);
         app.controller('customersCtrl', function ($scope, $http) {
             $http.get("/api/project")
              .success(function (rel) {
                  var list = new Array();
-                 if (rel !=null) {
+                 if (rel != null) {
                      list = rel;
 
                  }
-                 list[list.length] = {
-                     ProjectName: "新建",
-                     Publish: {
-                         TargetDirectorys: [{
-                             Path: "98"
-                         }],
-                         LoseContext: [
-                             {
-                                 Path: "1"
-                             },
-                             {
-                                 Path: "2"
-                             }
-                         ]
-                     }
-
-                 };
+                 list = list.Where(function (m) { return m != null; });
+                 list[list.length] = GetProjectModel();
 
                  $scope.list = list;
                  $scope.addPublishPath = function (p) {
 
+                     p.Publish.TargetDirectorys[p.Publish.TargetDirectorys.length] = { Path: "", Guid: Guid.NewGuid() }
 
-                     p.Publish.TargetDirectorys[p.Publish.TargetDirectorys.length] = { Path: "99" }
 
-
+                 };
+                 /*删除发布地址*/
+                 $scope.deletePW = function (p, w) {
+                     var index = p.Publish.TargetDirectorys.Index(function (m) { return m.Guid == w.Guid });
+                     alert(index);
+                     if (index > -1) {
+                         p.Publish.TargetDirectorys.removeArr(index);
+                     }
+                 };
+                 /*删除忽略文件*/
+                 $scope.deletePC = function (p, c) {
+                     var index = p.Publish.LoseContext.Index(function (m) { return m.Guid == c.Guid });
+                     if (index > -1) {
+                         p.Publish.LoseContext.removeArr(index);
+                     }
                  };
                  $scope.saveProjectList = function (p) {
 
-
-                     //$http({
-                     //    method: 'post',
-                     //    url: "/api/project",
-                     //    data:JSON.stringify(p),
-                     //    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                     //}).success(function () {
-                     //    alert(JSON.stringify(p));
-                     //});
-
-
                      var data = JSON.stringify(p);
-                     // alert(data);
-                     //    data = JSON.stringify(data);
+                     $.PostJson("/api", "project", p, function (data) {
+                         if (data == true) {
+                             var np = list.First(function (m) { return m.ProjectName == "新建" });
 
-                     $.Json("/api", "project", p, function (data) {
+                             if (np == null) {
+                                 $scope.$apply(function () {
+                                     list[list.length] = GetProjectModel();
+                                     alert("保存成功");
+                                 });
+                             } else {
+                                 alert("保存成功");
+                             }
 
+                         } else {
+                             alert("项目信息保存失败");
+                         }
                      });
 
+
                  };
+                 /*删除项目信息*/
+                 $scope.deleteProject = function (p) {
+
+                     var index = list.Index(function (m) { return m.ProjectName == p.ProjectName; });
+                     if (index > -1) {
+                         $.DeleteJson("/api", "project", p.ProjectName, function () {
+                             $scope.$apply(function () {
+                                 list.removeArr(index);
+                                 ShowFirstTable();
+                             });
+
+                         });
+
+                     }
+                 }
                  $scope.addLosePath = function (p) {
-                     p.Publish.LoseContext[p.Publish.LoseContext.length] = { Path: "7" };
+                     p.Publish.LoseContext[p.Publish.LoseContext.length] = { Path: "", Guid: Guid.NewGuid() };
                  };
-                 setTimeout(function () {
-                     $('#myTab a:first').tab('show');
-                 }, 0)
-             });
+                 ShowFirstTable();
+             }).error(function () {
+                 alert("获取项目信息失败");
+             });;
         });
+
+        function ShowFirstTable() {
+            setTimeout(function () {
+                $('#myTab a:first').tab('show');
+            }, 0);
+        }
     </script>
 }

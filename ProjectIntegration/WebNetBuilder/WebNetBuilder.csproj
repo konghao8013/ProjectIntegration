@@ -896,6 +896,8 @@
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\JqueryFN.js" />
+    <Content Include="Scripts\view\ProjectLog.js" />
+    <Content Include="Scripts\view\ProjectStatus.js" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -933,6 +935,7 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <None Include="Properties\PublishProfiles\ds.pubxml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
@@ -940,6 +943,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\projectSetting.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\ProjectStatus.cshtml" />
+    <Content Include="Views\Home\ProjectLog.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -953,6 +958,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectLog.cs" />
     <Compile Include="Controllers\ProjectSettingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

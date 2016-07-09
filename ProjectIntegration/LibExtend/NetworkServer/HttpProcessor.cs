@@ -103,7 +103,7 @@ namespace LibExtend.NetworkServer
             var index = http_url.IndexOf("?");
             if (index > -1 && http_url.Length > 1)
             {
-                AbsolutePath = http_url.Substring(0, index - 1);
+                AbsolutePath = http_url.Substring(1, index - 1);
                 QueryString = http_url.Substring(index + 1, http_url.Length - index - 1);
             }
             else

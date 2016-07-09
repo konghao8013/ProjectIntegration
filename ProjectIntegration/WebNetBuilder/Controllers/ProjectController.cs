@@ -18,29 +18,56 @@ namespace WebNetBuilder.Api
             var value = http.HttpGet(System.Web.Configuration.WebConfigurationManager.AppSettings["ServerURL"] + "/getprojects", "");
             return value.Deserialize<List<ProjectSetting>>();
         }
-       
+
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public string Get(string name)
         {
-            return "value";
+            if (!string.IsNullOrEmpty(name))
+            {
+                var http = new HttpHelper();
+                var value = http.HttpGet(System.Web.Configuration.WebConfigurationManager.AppSettings["ServerURL"] + "/builder", "name=" + name);
+                return value;
+            }
+            return "-1";
         }
         [AcceptVerbs("POST")]
         // POST api/<controller>
-        public void Post(ProjectSetting project)
+        public bool Post(ProjectSetting project)
         {
             var http = new HttpHelper();
+            var result = false;
+
             http.HttpPost(System.Web.Configuration.WebConfigurationManager.AppSettings["ServerURL"] + "/projectsetting", project.Serialize());
+            result = true;
+
+            return result;
         }
 
         // PUT api/<controller>/5
         public void Put(int id, [FromBody]string value)
         {
         }
-
+        [AcceptVerbs("Delete")]
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public bool Delete(dynamic name)
         {
+            var http = new HttpHelper();
+            var result = false;
+            try
+            {
+                var str = http.HttpGet(System.Web.Configuration.WebConfigurationManager.AppSettings["ServerURL"] + "/removeproject", "name=" + name);
+                if (str == "true")
+                {
+                    result = true;
+                }
+            }
+            catch (Exception e)
+            {
+
+                //  throw;
+            }
+            return result;
         }
     }
 }

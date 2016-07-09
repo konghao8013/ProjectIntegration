@@ -17,6 +17,13 @@ namespace WebNetBuilder.Controllers
             ViewBag.ServerURL = System.Web.Configuration.WebConfigurationManager.AppSettings["ServerURL"];
             return View();
         }
+        public ActionResult ProjectStatus()
+        {
 
+            return View();
+        }
+        public ActionResult ProjectLog() {
+            return View();
+        }
     }
 }

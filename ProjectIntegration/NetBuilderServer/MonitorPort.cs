@@ -54,7 +54,11 @@ namespace NetBuilderServer
             switch (p.AbsolutePath)
             {
                 case "builder":
-
+                    var ppN = p.Params["name"];
+                    if (!string.IsNullOrEmpty(ppN))
+                    {
+                        result = CodeOperation.Builder(ppN) + "";
+                    }
                     break;
                 case "codeupdate":
 
@@ -64,6 +68,7 @@ namespace NetBuilderServer
                     if (!string.IsNullOrEmpty(pn))
                     {
                         CodeOperation.RemoveProject(pn);
+                        result = "true";
                     }
                     break;
                 case "projectsetting":
@@ -71,6 +76,13 @@ namespace NetBuilderServer
                     if (!string.IsNullOrEmpty(data))
                     {
                         result = CodeOperation.SetProject(data) + "";
+                    }
+                    break;
+                case "getlog":
+                    var projecName = p.Params["name"];
+                    if (!string.IsNullOrEmpty(projecName))
+                    {
+                        result = CodeOperation.GetLogByProject(projecName);
                     }
                     break;
                 case "getprojects":

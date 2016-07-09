@@ -8,6 +8,13 @@ namespace NetBuilderServer
     public class LoseContext
     {
         public string Path { set; get; }
-        public List<LoseTypeEnum> Lose = new List<LoseTypeEnum>();
+        public LoseTypeEnum LoseType
+        {
+            get
+            {
+                return Path[Path.Length - 1] == System.IO.Path.DirectorySeparatorChar ? LoseTypeEnum.Directory : LoseTypeEnum.File;
+            }
+        }
+        public string Guid { set; get; }
     }
 }

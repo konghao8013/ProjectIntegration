@@ -7,6 +7,7 @@ namespace CodeManage
 {
     public abstract class ACodeFile : ICodeFile
     {
+       
         string _source;
         string _target;
         string _commandPath;

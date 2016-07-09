@@ -26,10 +26,10 @@ namespace LibExtend.NetworkServer
             //request.AllowAutoRedirect = false; //禁止自动重定向
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
-           // request.ContentLength = Encoding.UTF8.GetByteCount(postDataStr);
-            request.CookieContainer = cookie; //cookie信息由CookieContainer自行维护
+          //  request.ContentLength = Encoding.UTF8.GetByteCount(postDataStr);
+           // request.CookieContainer = cookie; //cookie信息由CookieContainer自行维护
             Stream myRequestStream = request.GetRequestStream();
-            StreamWriter myStreamWriter = new StreamWriter(myRequestStream, Encoding.GetEncoding("gb2312"));
+            StreamWriter myStreamWriter = new StreamWriter(myRequestStream, Encoding.GetEncoding("utf-8"));
             myStreamWriter.Write(postDataStr);
             myStreamWriter.Close();
 

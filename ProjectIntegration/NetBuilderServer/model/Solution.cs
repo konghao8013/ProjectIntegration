@@ -8,7 +8,7 @@ namespace NetBuilderServer
     public class Solution
     {
         public string Path { set; get; }
-        
+        public String BuilderPath { set; get; }
 
     }
 }

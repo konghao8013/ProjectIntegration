@@ -45,6 +45,7 @@
     <Compile Include="dal\Tool.cs" />
     <Compile Include="model\CodeMgr.cs" />
     <Compile Include="CodeOperation.cs" />
+    <Compile Include="model\LogType.cs" />
     <Compile Include="model\LoseContext.cs" />
     <Compile Include="model\LoseTypeEnum.cs" />
     <Compile Include="MonitorPort.cs" />
@@ -55,6 +56,14 @@
     <Compile Include="model\UserTypeEnum.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CodeBuild\CodeBuild.csproj">
+      <Project>{9252d8b3-5cc7-4632-8628-42693c9b4160}</Project>
+      <Name>CodeBuild</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeManage\CodeManage.csproj">
+      <Project>{a514b647-6565-4454-9d95-8da2a480a3f9}</Project>
+      <Name>CodeManage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibExtend\LibExtend.csproj">
       <Project>{13553ff8-b2a1-4d20-93c9-84051198e43b}</Project>
       <Name>LibExtend</Name>

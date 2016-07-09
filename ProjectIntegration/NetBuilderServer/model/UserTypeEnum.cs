@@ -8,6 +8,6 @@ namespace NetBuilderServer
     public enum UserTypeEnum
     {
         SVN=1,
-        GIT=3
+        GIT=2
     }
 }
