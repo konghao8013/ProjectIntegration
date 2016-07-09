@@ -21,11 +21,11 @@ namespace BuildCodeServer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var prot = ConfigurationManager.AppSettings["prot"];
-            if (prot.Length > 0)
+            var port = ConfigurationManager.AppSettings["port"];
+            if (port.Length > 0)
             {
             
-                var monitor = new MonitorPort(int.Parse(prot));
+                var monitor = new MonitorPort(int.Parse(port));
                 monitor.Start();
                 ShowInTaskbar = false;
                 Opacity = 0d;

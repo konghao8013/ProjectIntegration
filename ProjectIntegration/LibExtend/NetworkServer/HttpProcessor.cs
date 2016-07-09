@@ -198,7 +198,7 @@ namespace LibExtend.NetworkServer
             }
 
             Debug.WriteLine("get post data end");
-            srv.handlePOSTRequest(this, new StreamReader(ms,Encoding.Default));
+            srv.handlePOSTRequest(this, new StreamReader(ms, Encoding.Default));
 
         }
 
@@ -206,6 +206,13 @@ namespace LibExtend.NetworkServer
         {
             outputStream.WriteLine("HTTP/1.0 200 OK");
             outputStream.WriteLine("Content-Type: text/html");
+            outputStream.WriteLine("Connection: close");
+            outputStream.WriteLine("");
+        }
+        public void writeDownload()
+        {
+            outputStream.WriteLine("HTTP/1.0 200 OK");
+            outputStream.WriteLine("Content-Type: application/octet-stream");
             outputStream.WriteLine("Connection: close");
             outputStream.WriteLine("");
         }

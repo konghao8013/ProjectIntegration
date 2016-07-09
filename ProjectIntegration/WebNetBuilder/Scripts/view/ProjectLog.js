@@ -8,13 +8,15 @@ myApp.controller("controllerCtrl", function ($scope, $http) {
 
         $scope.loadLogs = function (p) {
             if (p != null) {
-                var path = location.href + "/api/projectlog?name=" + p.ProjectName;
+                var path = "http://" + location.host + "/api/projectlog?name=" + p.ProjectName + "&take=-1";
 
-                alert("开始加载日志信息请稍后:" + path);
-                $http.get("/api/projectlog?name=" + p.ProjectName).success(function (value) {
+                // alert("开始加载日志信息请稍后:" + path);
+                var log = { Value: "", path: path };
+                p.Logs = log;
+                $http.get("/api/projectlog?name=" + p.ProjectName + "&take=50").success(function (value) {
                     if (value != null) {
-                        alert("日志加载完成正在渲染");
-                        p.Logs = { Value: value };
+                        log.Value = value;
+
 
 
                     }

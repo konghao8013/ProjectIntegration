@@ -67,22 +67,24 @@ namespace LibExtend.NetworkServer
 
         public void handleGETRequest(HttpProcessor p)
         {
-            p.writeSuccess();
-            if (HttpGetEvent != null) {
+           
+            if (HttpGetEvent != null)
+            {
                 HttpGetEvent(p);
             }
-           
+
         }
-        public void handlePOSTRequest(HttpProcessor p, StreamReader inputData )
+        public void handlePOSTRequest(HttpProcessor p, StreamReader inputData)
         {
-            
-            if (HttpPostEvent != null) {
-                var data =inputData.ReadLine();
-                HttpPostEvent(p,data);
-              
+           
+            if (HttpPostEvent != null)
+            {
+                var data = inputData.ReadLine();
+                HttpPostEvent(p, data);
+
             }
-            p.writeSuccess();
+
         }
-     
+
     }
 }

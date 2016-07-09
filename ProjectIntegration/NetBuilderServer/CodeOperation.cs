@@ -276,7 +276,7 @@ namespace NetBuilderServer
                 ICodeFile codeMgr = CreateCodeMgr(project.CodeMgr);
                 LogType.WriteLog(project.ProjectName, "签出代码文件", string.Format("正在签出代码文件:{0}，请不要做其他操作", (project.CodeMgr.Source)));
                 var rest = codeMgr.Clone();
-                LogType.WriteLog(project.ProjectName, "签出代码文件", string.Format("代码文件签出成功：{0}", project.CodeMgr.Source));
+                LogType.WriteLog(project.ProjectName, "签出代码文件", string.Format("代码文件签出成功：{0} msg:{1}", project.CodeMgr.Source, rest));
             }
         }
 
@@ -294,9 +294,23 @@ namespace NetBuilderServer
         {
             Tool.ProjectSettingServe.Remove(name);
         }
-        public static string GetLogByProject(string projectName)
+        public static string GetContent(string path)
         {
-            var logs = LogType.GetLogByProjectName(projectName, "").OrderByDescending(a => DateTime.Parse(a.CreateTime));
+            var log = new LogType();
+            if (File.Exists(path))
+            {
+                var sr = new StreamReader(path, Encoding.Default);
+                var re = sr.ReadToEnd();
+
+                sr.Close();
+                sr.Dispose();
+                log = re.Deserialize<LogType>();
+            }
+            return log.Content;
+        }
+        public static string GetLogByProject(string projectName,int take)
+        {
+            var logs = LogType.GetLogByProjectName(projectName, "",take).OrderByDescending(a => DateTime.Parse(a.CreateTime));
             var list = new List<string>();
             StringBuilder sb = new StringBuilder();
             sb.Clear();
@@ -305,10 +319,9 @@ namespace NetBuilderServer
 
                 sb.Append("标题:");
                 sb.Append(l.Title);
-                sb.Append("         创建时间:");
+                sb.Append(" 创建时间:");
                 sb.AppendLine(l.CreateTime);
                 sb.AppendLine(l.Content);
-                sb.AppendLine();
                 sb.AppendLine();
             }
             return sb.ToString();

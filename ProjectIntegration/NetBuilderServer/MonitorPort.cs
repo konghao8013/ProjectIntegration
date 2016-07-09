@@ -1,6 +1,7 @@
 ﻿using LibExtend.NetworkServer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -63,6 +64,16 @@ namespace NetBuilderServer
                 case "codeupdate":
 
                     break;
+                case "getlogentity":
+                    var path = p.Params["path"];
+                    if (!string.IsNullOrEmpty(path))
+                    {
+                        result = CodeOperation.GetContent(path);
+                        p.writeDownload();
+                        p.outputStream.Write(result.ToArray());
+                        return;
+                    }
+                    break;
                 case "removeproject":
                     var pn = p.Params["name"];
                     if (!string.IsNullOrEmpty(pn))
@@ -80,9 +91,17 @@ namespace NetBuilderServer
                     break;
                 case "getlog":
                     var projecName = p.Params["name"];
+                    var take = 100;
                     if (!string.IsNullOrEmpty(projecName))
                     {
-                        result = CodeOperation.GetLogByProject(projecName);
+
+                        if (!Int32.TryParse(p.Params["take"], out take))
+                        {
+                            take = 100;
+                        }
+
+                        result = CodeOperation.GetLogByProject(projecName, take);
+
                     }
                     break;
                 case "getprojects":
@@ -97,6 +116,7 @@ namespace NetBuilderServer
             {
                 result = "".Serialize();
             }
+            p.writeSuccess();
             p.outputStream.WriteLine(result);
 
             //p.Params[""]

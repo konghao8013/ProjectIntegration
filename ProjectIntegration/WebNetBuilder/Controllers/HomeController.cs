@@ -19,7 +19,7 @@ namespace WebNetBuilder.Controllers
         }
         public ActionResult ProjectStatus()
         {
-
+           
             return View();
         }
         public ActionResult ProjectLog() {
