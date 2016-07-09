@@ -6,4 +6,3 @@ D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\LibExtend\bin\
 D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\LibExtend\bin\Debug\LibExtend.pdb
 D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\LibExtend\obj\Debug\LibExtend.dll
 D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\LibExtend\obj\Debug\LibExtend.pdb
-D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\LibExtend\obj\Debug\LibExtend.csprojResolveAssemblyReference.cache
