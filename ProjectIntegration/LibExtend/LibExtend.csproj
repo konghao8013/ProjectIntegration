@@ -32,6 +32,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Command.cs" />
     <Compile Include="FolderExtend.cs" />
+    <Compile Include="NetworkServer\HttpHelper.cs" />
+    <Compile Include="NetworkServer\HttpProcessor.cs" />
+    <Compile Include="NetworkServer\HttpServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExtend.cs" />
   </ItemGroup>
