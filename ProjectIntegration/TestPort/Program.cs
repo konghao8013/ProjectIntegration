@@ -10,8 +10,12 @@ namespace TestPort
     {
         static void Main(string[] args)
         {
-            var monitor = new MonitorPort(817);
-            monitor.Start();
+            var prot = System.Configuration.ConfigurationManager.AppSettings["prot"];
+            if (prot.Length > 0)
+            {
+                var monitor = new MonitorPort(int.Parse(prot));
+                monitor.Start();
+            }
             Console.ReadLine();
         }
     }
