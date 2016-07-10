@@ -11,7 +11,7 @@ namespace CodeBuild
         public override void Build(BuildContext context)
         {
             var p = new Command();
-            p.Call(context.BuildPath + " " + context.CodePath);
+            p.Call(context.BuildPath + " " + context.CodePath + " /maxcpucount:4");
             p.Exit();
             context.Log = p.CommadnLog;
         }

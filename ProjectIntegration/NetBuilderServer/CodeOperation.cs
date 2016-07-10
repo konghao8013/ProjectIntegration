@@ -276,7 +276,7 @@ namespace NetBuilderServer
                 ICodeFile codeMgr = CreateCodeMgr(project.CodeMgr);
                 LogType.WriteLog(project.ProjectName, "签出代码文件", string.Format("正在签出代码文件:{0}，请不要做其他操作", (project.CodeMgr.Source)));
                 var rest = codeMgr.Clone();
-                LogType.WriteLog(project.ProjectName, "签出代码文件", string.Format("代码文件签出成功：{0} msg:{1}", project.CodeMgr.Source, rest));
+                LogType.WriteLog(project.ProjectName, "签出代码文件", string.Format("代码文件签出成功：{0} msg:{1}", project.CodeMgr.Source, rest.Log));
             }
         }
 
@@ -308,9 +308,9 @@ namespace NetBuilderServer
             }
             return log.Content;
         }
-        public static string GetLogByProject(string projectName,int take)
+        public static string GetLogByProject(string projectName, int take)
         {
-            var logs = LogType.GetLogByProjectName(projectName, "",take).OrderByDescending(a => DateTime.Parse(a.CreateTime));
+            var logs = LogType.GetLogByProjectName(projectName, "", take).OrderByDescending(a => DateTime.Parse(a.CreateTime));
             var list = new List<string>();
             StringBuilder sb = new StringBuilder();
             sb.Clear();
