@@ -11,7 +11,7 @@ namespace CodeBuild
         public override void Build(BuildContext context)
         {
             var p = new Command();
-            p.Call(context.BuildPath + " " + context.CodePath + " /maxcpucount:4");
+            p.Call(context.BuildPath + " " + context.CodePath + " /maxcpucount");
             p.Exit();
             context.Log = p.CommadnLog;
         }
@@ -24,7 +24,7 @@ namespace CodeBuild
             command.Append(context.BuildPath);
             command.Append(" ");
             command.Append(context.PublishItemPath);
-            command.Append(@" /t:ResolveReferences;Compile /t:_WPPCopyWebApplication  /p:Configuration=Release /maxcpucount:4");
+            command.Append(@" /t:ResolveReferences;Compile /t:_WPPCopyWebApplication  /p:Configuration=Release /maxcpucoun");
             command.Append(" /p:WebProjectOutputDir=");
             command.Append(context.publishDirectory);
             p.Call(command.ToString());
