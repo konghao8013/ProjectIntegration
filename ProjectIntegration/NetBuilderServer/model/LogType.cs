@@ -103,6 +103,8 @@ namespace NetBuilderServer.model
                 {
                     list.Add(type);
                 }
+                sr.Close();
+                sr.Dispose();
             }
             return list;
         }

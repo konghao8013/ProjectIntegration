@@ -52,6 +52,7 @@ namespace NetBuilderServer
         void Invoke(HttpProcessor p, string data = null)
         {
             var result = "";
+           
             switch (p.AbsolutePath)
             {
                 case "builder":

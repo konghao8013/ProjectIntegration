@@ -25,6 +25,7 @@ namespace NetBuilderServer
         /// </summary>
         Underway = 2,
         Stop = 0,
+        Error = 3
     }
     public class CodeOperation
     {
@@ -51,7 +52,7 @@ namespace NetBuilderServer
             var thread = new Thread(() =>
             {
 
-
+                
                 lock (status)
                 {
                     status.Status = ProjectStatusEnum.Underway;
@@ -81,7 +82,10 @@ namespace NetBuilderServer
                     }
                     finally
                     {
-                        status.Status = ProjectStatusEnum.Stop;
+                        if (status.Status == ProjectStatusEnum.Underway)
+                        {
+                            status.Status = ProjectStatusEnum.Stop;
+                        }
                     }
 
                 }
@@ -107,6 +111,12 @@ namespace NetBuilderServer
 
                 }
                 build.Publish(buildContext);
+                var log = buildContext.Log;
+                if (log.IndexOf("0 个错误") < 0)
+                {
+                    var status = GetStatus(project.ProjectName);
+                    status.Status = ProjectStatusEnum.Error;
+                }
                 //拷贝发布成功的文件
                 CopyPublish(project, buildContext);
                 LogType.WriteLog(project.ProjectName, "发布网站项目", string.Format("网站项目发布完成:{0}", project.Publish.Path));
@@ -346,7 +356,9 @@ namespace NetBuilderServer
                         case ProjectStatusEnum.Stop:
                             status = "生成完成";
                             break;
-
+                        case ProjectStatusEnum.Error:
+                            status = "项目生成错误请查看日志";
+                            break;
                     }
                     item.Status = status;
                     var log = LogType.GetLogByProjectName(item.ProjectName, "结束执行生成任务").OrderByDescending(a => a.CreateTime).FirstOrDefault();

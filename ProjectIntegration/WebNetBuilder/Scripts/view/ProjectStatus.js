@@ -21,6 +21,9 @@ app.controller('customersCtrl', function ($scope, $http) {
                 else if (rel.indexOf("Stop")) {
                     value = "生成成功";
                 }
+                else if (rel.indexOf("Error")) {
+                    value = "项目生成错误请查看日志";
+                }
                 alert(value + "_code:" + rel);
                 if (value.length > 1) {
                     p.Status = value;
