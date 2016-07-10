@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Command.cs" />
     <Compile Include="FolderExtend.cs" />
+    <Compile Include="NetworkServer\Base64.cs" />
     <Compile Include="NetworkServer\HttpHelper.cs" />
     <Compile Include="NetworkServer\HttpProcessor.cs" />
     <Compile Include="NetworkServer\HttpServer.cs" />

@@ -52,7 +52,7 @@ namespace NetBuilderServer
             var thread = new Thread(() =>
             {
 
-                
+
                 lock (status)
                 {
                     status.Status = ProjectStatusEnum.Underway;
@@ -71,6 +71,10 @@ namespace NetBuilderServer
                             PubilshWeb(project);
                             LogType.WriteLog(project.ProjectName, "结束执行生成任务", "完成成项目文件");
 
+                        }
+                        else
+                        {
+                            LogType.WriteLog(name, "结束执行生成任务", "未找到指定的项目:" + name);
                         }
                     }
                     catch (Exception e)
