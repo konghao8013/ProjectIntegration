@@ -86,7 +86,7 @@ namespace NetBuilderServer.model
                     var content = "";
                     if (!string.IsNullOrEmpty(ip) && !string.IsNullOrEmpty(port))
                     {
-                        content = "htttp://" + ip + ":" + port + "/getlogentity?path=" + HttpUtility.UrlEncode(item.FullName);
+                        content = "http://" + ip + ":" + port + "/getlogentity?path=" + HttpUtility.UrlEncode(item.FullName);
                         lt.Content = "地址：" + content;
                     }
                     else
