@@ -56,8 +56,8 @@ namespace WebNetBuilder.Api
             var result = false;
             try
             {
-                var str = http.HttpGet(System.Web.Configuration.WebConfigurationManager.AppSettings["ServerURL"] + "/removeproject", "name=" + name);
-                if (str == "true")
+                string str = http.HttpGet(System.Web.Configuration.WebConfigurationManager.AppSettings["ServerURL"] + "/removeproject", "name=" + name);
+                if (str.IndexOf("true")>-1)
                 {
                     result = true;
                 }

@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-app="myApp" ng-controller="customersCtrl">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">项目运行情况</div>
+        <div class="panel-body">
+            <p>面板显示项目目前运行的情况</p>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <tr>
+                <th>项目名称</th>
+                <th>项目状态</th>
+                <th>最后生成时间</th>
+                <th>操作</th>
+            </tr>
+            <tr ng-repeat="p in list">
+                <td>{{p.ProjectName}}</td>
+                <td>{{p.Status}}</td>
+                <td>{{p.LastTime}}</td>
+                <td>
+                    <button  ng-click="BuildProject(p)" type="button" class="btn btn-default" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"> 重新生成 </span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/view/ProjectStatus.js"></script>
+}

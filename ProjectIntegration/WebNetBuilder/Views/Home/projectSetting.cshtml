@@ -17,22 +17,21 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="input-group">
                                 <span class="input-group-addon">项目名称：</span>
                                 <input type="text" class="form-control" placeholder="项目名称" ng-model="p.ProjectName" />
                             </div>
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-4">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-5">
 
                                     <button type="button" class="btn btn-default" ng-click="saveProjectList(p)" aria-label="Left Align">
                                         <span class="glyphicon glyphicon-ok" aria-hidden="true"> 保存项目信息</span>
                                     </button>
                                 </div>
-                                <div class="col-lg-2"></div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-5">
                                     <button type="button" class="btn btn-default" ng-click="deleteProject(p)" aria-label="Left Align">
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"> 删除项目信息</span>
                                     </button>
@@ -254,8 +253,9 @@
 
                  }
                  list = list.Where(function (m) { return m != null; });
-                 list[list.length] = GetProjectModel();
-
+                 var item = GetProjectModel();
+                 list.splice(0, 0, item);
+                
                  $scope.list = list;
                  $scope.addPublishPath = function (p) {
 

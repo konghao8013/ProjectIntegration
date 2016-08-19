@@ -11,7 +11,7 @@ namespace CodeBuild
         public override void Build(BuildContext context)
         {
             var p = new Command();
-            p.Call(context.BuildPath + " " + context.CodePath + " ");
+            p.Call(context.BuildPath + " \"" + context.CodePath + " \" ");
             p.Exit();
             context.Log = p.CommadnLog;
         }
@@ -19,17 +19,24 @@ namespace CodeBuild
         public override void Publish(BuildContext context)
         {//   /maxcpucoun
             var p = new Command();
-            var ax = @"D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\WebNetBuilder\Properties\PublishProfiles\ds.pubxml";
+         
             var command = new StringBuilder();
             command.Append(context.BuildPath);
             command.Append(" ");
+
+            command.Append("\"");
             command.Append(context.PublishItemPath);
-            command.Append(@" /t:ResolveReferences;Compile /t:_WPPCopyWebApplication  /p:Configuration=Release ");
+            command.Append("\"");
+            //command.Append(@" /t:ResolveReferences;Compile /t:_WPPCopyWebApplication  /p:Configuration=Release ");
+            command.Append(@" /t:_WPPCopyWebApplication  /p:Configuration=Release ");
             command.Append(" /p:WebProjectOutputDir=");
-            command.Append(context.publishDirectory);
+            command.Append("\""+ context.publishDirectory + "\" ");
+            context.Log += command.ToString();
+            context.Log += "\r\n";
             p.Call(command.ToString());
             p.Exit();
-            context.Log = p.CommadnLog;
+
+            context.Log += p.CommadnLog;
         }
     }
 }

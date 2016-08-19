@@ -19,7 +19,7 @@ namespace CodeManage.Tests
             var key = IdentityKey.CreateIdentityKey("konghao", "111111", RTypeEnum.SVN);
             ICodeFile svn = new SVNCode("https://DESKTOP-1O16UC8/svn/AutoTest/",target,key);
             var log=svn.Clone().Log;
-            
+             
             var dir = new DirectoryInfo(target);
             if (dir.GetDirectories().Count() == 0)
                 Assert.Fail(log);

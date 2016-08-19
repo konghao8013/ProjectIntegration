@@ -12,3 +12,17 @@ D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\bin
 D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\obj\Debug\CodeManage.csprojResolveAssemblyReference.cache
 D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\obj\Debug\CodeManage.dll
 D:\KongHao\KongHao\Code\git\ProjectIntegration\ProjectIntegration\CodeManage\obj\Debug\CodeManage.pdb
+E:\konghao\code\ProjectIntegration\ProjectIntegration\CodeManage\bin\Debug\CodeManage.dll
+E:\konghao\code\ProjectIntegration\ProjectIntegration\CodeManage\bin\Debug\CodeManage.pdb
+E:\konghao\code\ProjectIntegration\ProjectIntegration\CodeManage\bin\Debug\LibExtend.dll
+E:\konghao\code\ProjectIntegration\ProjectIntegration\CodeManage\bin\Debug\LibExtend.pdb
+E:\konghao\code\ProjectIntegration\ProjectIntegration\CodeManage\obj\Debug\CodeManage.csprojResolveAssemblyReference.cache
+E:\konghao\code\ProjectIntegration\ProjectIntegration\CodeManage\obj\Debug\CodeManage.dll
+E:\konghao\code\ProjectIntegration\ProjectIntegration\CodeManage\obj\Debug\CodeManage.pdb
+E:\code\1_HitekAutoBuildTool\CodeManage\bin\Debug\CodeManage.dll
+E:\code\1_HitekAutoBuildTool\CodeManage\bin\Debug\CodeManage.pdb
+E:\code\1_HitekAutoBuildTool\CodeManage\bin\Debug\LibExtend.dll
+E:\code\1_HitekAutoBuildTool\CodeManage\bin\Debug\LibExtend.pdb
+E:\code\1_HitekAutoBuildTool\CodeManage\obj\Debug\CodeManage.csprojResolveAssemblyReference.cache
+E:\code\1_HitekAutoBuildTool\CodeManage\obj\Debug\CodeManage.dll
+E:\code\1_HitekAutoBuildTool\CodeManage\obj\Debug\CodeManage.pdb

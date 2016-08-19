@@ -82,7 +82,7 @@ namespace NetBuilderServer.model
                 {
                     var lt = new LogType();
                     lt.Title = item.Name;
-                    lt.CreateTime = item.CreationTime.ToString("yyyy年MM月dd日 hh:mm:ss");
+                    lt.CreateTime = item.CreationTime.ToString("yyyy年MM月dd日 HH:mm:ss");
                     var content = "";
                     if (!string.IsNullOrEmpty(ip) && !string.IsNullOrEmpty(port))
                     {

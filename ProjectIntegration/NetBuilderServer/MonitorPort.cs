@@ -109,8 +109,10 @@ namespace NetBuilderServer
                     result = CodeOperation.GetProjectList();
                     break;
                 default:
+                    p.writeSuccess();
                     p.outputStream.WriteLine("返回测试界面" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-                    break;
+                    return;
+                
 
             }
             if (string.IsNullOrEmpty(result))

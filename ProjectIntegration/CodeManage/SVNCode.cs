@@ -24,7 +24,26 @@ namespace CodeManage
             IdentityKey = key;
            // CommandPath = path;
         }
-
+        /// <summary>
+        /// 判断是否有SVN地址
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        bool IsHaveSvnDir(string target, ref string svnPath, DirectoryInfo dir=null) {
+            dir = dir?? new DirectoryInfo(target);
+            var dirs= dir.GetDirectories();
+            var result = false;
+            foreach (var d in dirs)
+            {
+                if (d.Name.ToLower() == ".svn") {
+                    result = true;
+                    svnPath = dir.FullName;
+                    return result;
+                }
+                result = IsHaveSvnDir(d.FullName,ref svnPath, d);
+            }
+            return result;
+        }
         public override ResultContext Clone()
         {
             var result = new ResultContext();
@@ -35,16 +54,28 @@ namespace CodeManage
                 var drive = Folder.GetDrive(Target) + ":";
                 cmd.Call(drive);
             }
-            cmd.Call("cd " + Target);
-
-
-            var key = IdentityKey;
-            cmd.Call("svn checkout " + Source);
-            cmd.Call("111111");
-            cmd.Call(key.UserName);
-            cmd.Call(key.Password);
-            cmd.Exit();
-            result.Log = cmd.CommadnLog;
+           
+            var svnFull = "";
+         
+            //如果存在则更新
+            if (IsHaveSvnDir(Target, ref svnFull))
+            {
+                result.Log += ".svn路劲：" + svnFull + "\r\n";
+                cmd.Call("cd " + svnFull);
+                cmd.Call("svn update");
+                cmd.Exit();
+            }
+            else
+            {
+                var key = IdentityKey;
+                cmd.Call("cd " + Target);
+                cmd.Call("svn checkout \"" + Source+"\"");
+                cmd.Call("111111");
+                cmd.Call(key.UserName);
+                cmd.Call(key.Password);
+                cmd.Exit();
+            }
+            result.Log += cmd.CommadnLog;
             return result;
         }
 

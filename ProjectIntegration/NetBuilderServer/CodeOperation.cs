@@ -65,8 +65,8 @@ namespace NetBuilderServer
                             LogType.WriteLog(project.ProjectName, "开始执行生成任务", "开始生成项目文件");
                             //更新代码文件
                             UpdateCode(project);
-                            //生成项目文件
-                            BuildProject(project);
+                            //生成项目文件 取消生成项目文件
+                            //BuildProject(project);
                             //发布项目文件
                             PubilshWeb(project);
                             LogType.WriteLog(project.ProjectName, "结束执行生成任务", "完成成项目文件");
@@ -104,7 +104,7 @@ namespace NetBuilderServer
             {
                 var buildContext = CreateBuildContext(project);
                 var build = ACodeBuild.CreateBuild(buildContext);
-                MoveToLose(project);
+               
                 var target = project.Publish.TargetDirectorys.FirstOrDefault().Path;
                 buildContext.publishDirectory = target + "_temp_" + project.ProjectName; ;
                 buildContext.PublishItemPath = project.Publish.Path;
@@ -114,16 +114,26 @@ namespace NetBuilderServer
                     Directory.CreateDirectory(buildContext.publishDirectory);
 
                 }
-                build.Publish(buildContext);
+                LogType.WriteLog(project.ProjectName, "发布网站项目", string.Format("发布地址:{0}", buildContext.publishDirectory));
+                try
+                {
+                    build.Publish(buildContext);
+                }
+                catch (Exception ee)
+                {
+
+                    LogType.WriteLog(project.ProjectName, "发布网站项目", string.Format("网站发布错误:{0}", ee.Message));
+                }
+                LogType.WriteLog(project.ProjectName, "发布网站项目", string.Format("网站项目发布完成:{0}:", buildContext.Log));
                 var log = buildContext.Log;
                 if (log.IndexOf("0 个错误") < 0)
                 {
                     var status = GetStatus(project.ProjectName);
                     status.Status = ProjectStatusEnum.Error;
                 }
+                MoveToLose(project);/*生成后再移动忽略文件*/
                 //拷贝发布成功的文件
                 CopyPublish(project, buildContext);
-                LogType.WriteLog(project.ProjectName, "发布网站项目", string.Format("网站项目发布完成:{0}", project.Publish.Path));
                 MoveToLose(project, false);
 
 
@@ -265,8 +275,17 @@ namespace NetBuilderServer
             {
                 buildContext = CreateBuildContext(project);
                 build = ACodeBuild.CreateBuild(buildContext);
-                LogType.WriteLog(project.ProjectName, "生成解决方案", string.Format("开始生成解决方案:{0}", project.CodeMgr.Target));
-                build.Build(buildContext);
+                LogType.WriteLog(project.ProjectName, "生成解决方案", string.Format("开始生成解决方案:{0}", buildContext.BuildPath));
+                try
+                {
+                    build.Build(buildContext);
+                }
+                catch (Exception ee)
+                {
+
+                    LogType.WriteLog(project.ProjectName, "生成解决方案", string.Format("生成错误：{0}", ee.Message));
+                }
+              
                 LogType.WriteLog(project.ProjectName, "生成解决方案", string.Format("解决方案生成完成：{0}", buildContext.Log));
 
             }

@@ -41,6 +41,7 @@ namespace LibExtend.NetworkServer
         {
             int next_char;
             string data = "";
+            var list = new List<byte>();
             while (true)
             {
                 next_char = inputStream.ReadByte();
@@ -51,6 +52,7 @@ namespace LibExtend.NetworkServer
                     Thread.Sleep(1);
                     continue;
                 };
+                list.Add((byte)next_char);
                 data += Convert.ToChar(next_char);
             }
             return data;
@@ -196,16 +198,16 @@ namespace LibExtend.NetworkServer
                 }
                 ms.Seek(0, SeekOrigin.Begin);
             }
-
+            
             Debug.WriteLine("get post data end");
-            srv.handlePOSTRequest(this, new StreamReader(ms, Encoding.Default));
+            srv.handlePOSTRequest(this, new StreamReader(ms, Encoding.UTF8));
 
         }
 
         public void writeSuccess()
         {
             outputStream.WriteLine("HTTP/1.0 200 OK");
-            outputStream.WriteLine("Content-Type: text/html");
+            outputStream.WriteLine("Content-Type: text/html;charset=utf-8");
             outputStream.WriteLine("Connection: close");
             outputStream.WriteLine("");
         }

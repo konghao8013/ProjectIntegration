@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html  >
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/JqueryFN.js"></script>
+</head>
+<body >
+    <nav id="bs-navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="/home/projectstatus">项目状态</a>
+            </li>
+            <li>
+                <a href="/home/projectSetting">项目设置</a>
+            </li>
+            <li>
+                <a href="/home/projectlog">日志</a>
+            </li>
+          
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+           <li>
+               <a>系统信息</a>
+           </li>
+        </ul>
+    </nav>
+    <div style="background:#6f5499; height:10px;"></div>
+
+   
+  
+    <div class="div_content">
+        @RenderBody();
+    </div>
+
+ 
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #left {
+            background-color: #434558;
+            float: left;
+            width: 220px;
+            margin-right: -100%;
+            height:100%;
+        }
+
+        #content {
+            float: left;
+            width: 100%;
+            height:100%;
+        }
+
+        #contentInner {
+            margin-left: 220px; /*==等于左边栏宽度值==*/
+            background-color: orange;
+             height:100%;
+        }
+        .div_content {
+            height:100%;
+        }
+        body {
+            height:100vh;
+        }
+        
+    </style>
+
+    @RenderSection("scripts", false)
+</body>
+</html>
